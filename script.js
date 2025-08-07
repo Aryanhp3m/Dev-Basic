@@ -10,15 +10,30 @@ function addTask() {
   }
 
   let li = document.createElement("li");
-  li.textContent = taskText;
 
-  li.onclick = function () {
+  let span = document.createElement("span");
+  span.textContent = taskText;
+
+  // Toggle complete on click
+  span.onclick = function () {
+    span.classList.toggle("completed");
+    saveTasks();
+  };
+
+  // Delete button
+  let delBtn = document.createElement("button");
+  delBtn.textContent = "❌";
+  delBtn.className = "delete-btn";
+  delBtn.onclick = function () {
     taskList.removeChild(li);
     saveTasks();
-  }
+  };
 
+  li.appendChild(span);
+  li.appendChild(delBtn);
   taskList.appendChild(li);
   taskInput.value = "";
+
   saveTasks();
 }
 
@@ -28,6 +43,24 @@ function saveTasks() {
 
 function loadTasks() {
   taskList.innerHTML = localStorage.getItem("tasks") || "";
+
+  // Restore event listeners
+  const spans = taskList.querySelectorAll("span");
+  const delBtns = taskList.querySelectorAll(".delete-btn");
+
+  spans.forEach(span => {
+    span.onclick = function () {
+      span.classList.toggle("completed");
+      saveTasks();
+    };
+  });
+
+  delBtns.forEach(btn => {
+    btn.onclick = function () {
+      btn.parentElement.remove();
+      saveTasks();
+    };
+  });
 }
 
 loadTasks();
