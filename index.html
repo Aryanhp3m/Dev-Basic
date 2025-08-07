@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List & Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1> My Simple Web Projects</h1>
+
+  <!-- To-Do List Section -->
+  <section class="box">
+    <h2>To-Do List</h2>
+    <div class="todo-input">
+      <input type="text" id="taskInput" placeholder="Enter a task...">
+      <button onclick="addTask()">Add</button>
+    </div>
+    <ul id="taskList"></ul>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="box">
+    <h2>🧮 Calculator</h2>
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('+')">+</button>
+
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('-')">-</button>
+
+      <button onclick="press('7')">7</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('*')">*</button>
+
+      <button onclick="press('0')">0</button>
+      <button onclick="press('.')">.</button>
+      <button onclick="equal()">=</button>
+      <button onclick="press('/')">/</button>
+
+      <button class="clear-btn" onclick="clearDisplay()">C</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
